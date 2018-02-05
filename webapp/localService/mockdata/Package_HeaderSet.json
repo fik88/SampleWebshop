@@ -1,0 +1,121 @@
+[{
+	"Package_Id": "Package_Id 1",
+	"Package_Desc": "Package_Desc 1",
+	"__metadata": {
+		"uri": "Package_HeaderSet('Package_Id%201')",
+		"type": "ZFIKRI_WEBSHOP_SAMPLE_SRV.Package_Header"
+	},
+	"HeaderToItems": {
+		"__deferred": {
+			"uri": "Package_HeaderSet('Package_Id%201')/HeaderToItems"
+		}
+	}
+}, {
+	"Package_Id": "Package_Id 2",
+	"Package_Desc": "Package_Desc 2",
+	"__metadata": {
+		"uri": "Package_HeaderSet('Package_Id%202')",
+		"type": "ZFIKRI_WEBSHOP_SAMPLE_SRV.Package_Header"
+	},
+	"HeaderToItems": {
+		"__deferred": {
+			"uri": "Package_HeaderSet('Package_Id%202')/HeaderToItems"
+		}
+	}
+}, {
+	"Package_Id": "Package_Id 3",
+	"Package_Desc": "Package_Desc 3",
+	"__metadata": {
+		"uri": "Package_HeaderSet('Package_Id%203')",
+		"type": "ZFIKRI_WEBSHOP_SAMPLE_SRV.Package_Header"
+	},
+	"HeaderToItems": {
+		"__deferred": {
+			"uri": "Package_HeaderSet('Package_Id%203')/HeaderToItems"
+		}
+	}
+}, {
+	"Package_Id": "Package_Id 4",
+	"Package_Desc": "Package_Desc 4",
+	"__metadata": {
+		"uri": "Package_HeaderSet('Package_Id%204')",
+		"type": "ZFIKRI_WEBSHOP_SAMPLE_SRV.Package_Header"
+	},
+	"HeaderToItems": {
+		"__deferred": {
+			"uri": "Package_HeaderSet('Package_Id%204')/HeaderToItems"
+		}
+	}
+}, {
+	"Package_Id": "Package_Id 5",
+	"Package_Desc": "Package_Desc 5",
+	"__metadata": {
+		"uri": "Package_HeaderSet('Package_Id%205')",
+		"type": "ZFIKRI_WEBSHOP_SAMPLE_SRV.Package_Header"
+	},
+	"HeaderToItems": {
+		"__deferred": {
+			"uri": "Package_HeaderSet('Package_Id%205')/HeaderToItems"
+		}
+	}
+}, {
+	"Package_Id": "Package_Id 6",
+	"Package_Desc": "Package_Desc 6",
+	"__metadata": {
+		"uri": "Package_HeaderSet('Package_Id%206')",
+		"type": "ZFIKRI_WEBSHOP_SAMPLE_SRV.Package_Header"
+	},
+	"HeaderToItems": {
+		"__deferred": {
+			"uri": "Package_HeaderSet('Package_Id%206')/HeaderToItems"
+		}
+	}
+}, {
+	"Package_Id": "Package_Id 7",
+	"Package_Desc": "Package_Desc 7",
+	"__metadata": {
+		"uri": "Package_HeaderSet('Package_Id%207')",
+		"type": "ZFIKRI_WEBSHOP_SAMPLE_SRV.Package_Header"
+	},
+	"HeaderToItems": {
+		"__deferred": {
+			"uri": "Package_HeaderSet('Package_Id%207')/HeaderToItems"
+		}
+	}
+}, {
+	"Package_Id": "Package_Id 8",
+	"Package_Desc": "Package_Desc 8",
+	"__metadata": {
+		"uri": "Package_HeaderSet('Package_Id%208')",
+		"type": "ZFIKRI_WEBSHOP_SAMPLE_SRV.Package_Header"
+	},
+	"HeaderToItems": {
+		"__deferred": {
+			"uri": "Package_HeaderSet('Package_Id%208')/HeaderToItems"
+		}
+	}
+}, {
+	"Package_Id": "Package_Id 9",
+	"Package_Desc": "Package_Desc 9",
+	"__metadata": {
+		"uri": "Package_HeaderSet('Package_Id%209')",
+		"type": "ZFIKRI_WEBSHOP_SAMPLE_SRV.Package_Header"
+	},
+	"HeaderToItems": {
+		"__deferred": {
+			"uri": "Package_HeaderSet('Package_Id%209')/HeaderToItems"
+		}
+	}
+}, {
+	"Package_Id": "Package_Id 10",
+	"Package_Desc": "Package_Desc 10",
+	"__metadata": {
+		"uri": "Package_HeaderSet('Package_Id%2010')",
+		"type": "ZFIKRI_WEBSHOP_SAMPLE_SRV.Package_Header"
+	},
+	"HeaderToItems": {
+		"__deferred": {
+			"uri": "Package_HeaderSet('Package_Id%2010')/HeaderToItems"
+		}
+	}
+}]

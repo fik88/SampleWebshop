@@ -1,0 +1,112 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZFIKRI_WEBSHOP_SAMPLE_SRV" xml:lang="en" sap:schema-version="1">
+            <EntityType Name="Package_Header" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Package_Id"/>
+                </Key>
+                <Property Name="Package_Id" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Package ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Package_Desc" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="HeaderToItems" Relationship="ZFIKRI_WEBSHOP_SAMPLE_SRV.PackageHeadertoPackageItem" FromRole="FromRole_PackageHeadertoPackageItem" ToRole="ToRole_PackageHeadertoPackageItem"/>
+            </EntityType>
+            <EntityType Name="Package_Item" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Material_Number"/>
+                    <PropertyRef Name="Package_Id"/>
+                </Key>
+                <Property Name="Material_Number" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Package_Id" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Package Id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Material_Desc" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="ItemToHeader" Relationship="ZFIKRI_WEBSHOP_SAMPLE_SRV.PackageItemtoPackageHeader" FromRole="FromRole_PackageItemtoPackageHeader" ToRole="ToRole_PackageItemtoPackageHeader"/>
+            </EntityType>
+            <EntityType Name="Sold_To" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Sold_To_Id"/>
+                </Key>
+                <Property Name="Sold_To_Id" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Sold-to" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Sold_To_Name" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Ship_To" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Ship_To_Id"/>
+                </Key>
+                <Property Name="Ship_To_Id" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Ship-to" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ship_To_Name" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Sales_OrderHeader" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Order_Id"/>
+                </Key>
+                <Property Name="Order_Id" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Sales Document" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Sold_To" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Sold-to party" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ship_To" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Ship-to party" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Package_Id" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Package Id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="SalesOrderHeaderToSalesOrderItems" Relationship="ZFIKRI_WEBSHOP_SAMPLE_SRV.OrderHeaderToOrderItem" FromRole="FromRole_OrderHeaderToOrderItem" ToRole="ToRole_OrderHeaderToOrderItem"/>
+            </EntityType>
+            <EntityType Name="Sales_OrderItem" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Order_Id"/>
+                </Key>
+                <Property Name="Order_Id" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Sales Document" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <Association Name="OrderHeaderToOrderItem" sap:content-version="1">
+                <End Type="ZFIKRI_WEBSHOP_SAMPLE_SRV.Sales_OrderHeader" Multiplicity="1" Role="FromRole_OrderHeaderToOrderItem"/>
+                <End Type="ZFIKRI_WEBSHOP_SAMPLE_SRV.Sales_OrderItem" Multiplicity="*" Role="ToRole_OrderHeaderToOrderItem"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_OrderHeaderToOrderItem">
+                        <PropertyRef Name="Order_Id"/>
+                    </Principal>
+                    <Dependent Role="ToRole_OrderHeaderToOrderItem">
+                        <PropertyRef Name="Order_Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="PackageHeadertoPackageItem" sap:content-version="1">
+                <End Type="ZFIKRI_WEBSHOP_SAMPLE_SRV.Package_Header" Multiplicity="1" Role="FromRole_PackageHeadertoPackageItem"/>
+                <End Type="ZFIKRI_WEBSHOP_SAMPLE_SRV.Package_Item" Multiplicity="*" Role="ToRole_PackageHeadertoPackageItem"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_PackageHeadertoPackageItem">
+                        <PropertyRef Name="Package_Id"/>
+                    </Principal>
+                    <Dependent Role="ToRole_PackageHeadertoPackageItem">
+                        <PropertyRef Name="Package_Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="PackageItemtoPackageHeader" sap:content-version="1">
+                <End Type="ZFIKRI_WEBSHOP_SAMPLE_SRV.Package_Item" Multiplicity="1" Role="FromRole_PackageItemtoPackageHeader"/>
+                <End Type="ZFIKRI_WEBSHOP_SAMPLE_SRV.Package_Header" Multiplicity="1" Role="ToRole_PackageItemtoPackageHeader"/>
+            </Association>
+            <EntityContainer Name="ZFIKRI_WEBSHOP_SAMPLE_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="Package_HeaderSet" EntityType="ZFIKRI_WEBSHOP_SAMPLE_SRV.Package_Header" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="Package_ItemSet" EntityType="ZFIKRI_WEBSHOP_SAMPLE_SRV.Package_Item" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="Sold_ToSet" EntityType="ZFIKRI_WEBSHOP_SAMPLE_SRV.Sold_To" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="Ship_ToSet" EntityType="ZFIKRI_WEBSHOP_SAMPLE_SRV.Ship_To" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="Sales_OrderHeaderSet" EntityType="ZFIKRI_WEBSHOP_SAMPLE_SRV.Sales_OrderHeader" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="Sales_OrderItemSet" EntityType="ZFIKRI_WEBSHOP_SAMPLE_SRV.Sales_OrderItem" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="PackageHeadertoPackageItemSet" Association="ZFIKRI_WEBSHOP_SAMPLE_SRV.PackageHeadertoPackageItem" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Package_HeaderSet" Role="FromRole_PackageHeadertoPackageItem"/>
+                    <End EntitySet="Package_ItemSet" Role="ToRole_PackageHeadertoPackageItem"/>
+                </AssociationSet>
+                <AssociationSet Name="PackageItemtoPackageHeaderSet" Association="ZFIKRI_WEBSHOP_SAMPLE_SRV.PackageItemtoPackageHeader" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Package_ItemSet" Role="FromRole_PackageItemtoPackageHeader"/>
+                    <End EntitySet="Package_HeaderSet" Role="ToRole_PackageItemtoPackageHeader"/>
+                </AssociationSet>
+                <AssociationSet Name="OrderHeaderToOrderItemSet" Association="ZFIKRI_WEBSHOP_SAMPLE_SRV.OrderHeaderToOrderItem" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Sales_OrderHeaderSet" Role="FromRole_OrderHeaderToOrderItem"/>
+                    <End EntitySet="Sales_OrderItemSet" Role="ToRole_OrderHeaderToOrderItem"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link
+                xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="http://saps4xdemo:8001/sap/opu/odata/sap/ZFIKRI_WEBSHOP_SAMPLE_SRV/$metadata"/>
+                <atom:link
+                    xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="http://saps4xdemo:8001/sap/opu/odata/sap/ZFIKRI_WEBSHOP_SAMPLE_SRV/$metadata"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>

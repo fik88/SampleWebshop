@@ -1,0 +1,135 @@
+[{
+	"Material_Number": "Material_Number 1",
+	"Package_Id": "Package_Id 1",
+	"Material_Desc": "Material_Desc 1",
+	"__metadata": {
+		"uri": "Package_ItemSet(Material_Number='Material_Number%201',Package_Id='Package_Id%201')",
+		"type": "ZFIKRI_WEBSHOP_SAMPLE_SRV.Package_Item"
+	},
+	"ItemToHeader": {
+		"__deferred": {
+			"uri": "Package_ItemSet(Material_Number='Material_Number%201',Package_Id='Package_Id%201')/ItemToHeader"
+		}
+	}
+}, {
+	"Material_Number": "Material_Number 2",
+	"Package_Id": "Package_Id 2",
+	"Material_Desc": "Material_Desc 2",
+	"__metadata": {
+		"uri": "Package_ItemSet(Material_Number='Material_Number%202',Package_Id='Package_Id%202')",
+		"type": "ZFIKRI_WEBSHOP_SAMPLE_SRV.Package_Item"
+	},
+	"ItemToHeader": {
+		"__deferred": {
+			"uri": "Package_ItemSet(Material_Number='Material_Number%202',Package_Id='Package_Id%202')/ItemToHeader"
+		}
+	}
+}, {
+	"Material_Number": "Material_Number 3",
+	"Package_Id": "Package_Id 3",
+	"Material_Desc": "Material_Desc 3",
+	"__metadata": {
+		"uri": "Package_ItemSet(Material_Number='Material_Number%203',Package_Id='Package_Id%203')",
+		"type": "ZFIKRI_WEBSHOP_SAMPLE_SRV.Package_Item"
+	},
+	"ItemToHeader": {
+		"__deferred": {
+			"uri": "Package_ItemSet(Material_Number='Material_Number%203',Package_Id='Package_Id%203')/ItemToHeader"
+		}
+	}
+}, {
+	"Material_Number": "Material_Number 4",
+	"Package_Id": "Package_Id 4",
+	"Material_Desc": "Material_Desc 4",
+	"__metadata": {
+		"uri": "Package_ItemSet(Material_Number='Material_Number%204',Package_Id='Package_Id%204')",
+		"type": "ZFIKRI_WEBSHOP_SAMPLE_SRV.Package_Item"
+	},
+	"ItemToHeader": {
+		"__deferred": {
+			"uri": "Package_ItemSet(Material_Number='Material_Number%204',Package_Id='Package_Id%204')/ItemToHeader"
+		}
+	}
+}, {
+	"Material_Number": "Material_Number 5",
+	"Package_Id": "Package_Id 5",
+	"Material_Desc": "Material_Desc 5",
+	"__metadata": {
+		"uri": "Package_ItemSet(Material_Number='Material_Number%205',Package_Id='Package_Id%205')",
+		"type": "ZFIKRI_WEBSHOP_SAMPLE_SRV.Package_Item"
+	},
+	"ItemToHeader": {
+		"__deferred": {
+			"uri": "Package_ItemSet(Material_Number='Material_Number%205',Package_Id='Package_Id%205')/ItemToHeader"
+		}
+	}
+}, {
+	"Material_Number": "Material_Number 6",
+	"Package_Id": "Package_Id 6",
+	"Material_Desc": "Material_Desc 6",
+	"__metadata": {
+		"uri": "Package_ItemSet(Material_Number='Material_Number%206',Package_Id='Package_Id%206')",
+		"type": "ZFIKRI_WEBSHOP_SAMPLE_SRV.Package_Item"
+	},
+	"ItemToHeader": {
+		"__deferred": {
+			"uri": "Package_ItemSet(Material_Number='Material_Number%206',Package_Id='Package_Id%206')/ItemToHeader"
+		}
+	}
+}, {
+	"Material_Number": "Material_Number 7",
+	"Package_Id": "Package_Id 7",
+	"Material_Desc": "Material_Desc 7",
+	"__metadata": {
+		"uri": "Package_ItemSet(Material_Number='Material_Number%207',Package_Id='Package_Id%207')",
+		"type": "ZFIKRI_WEBSHOP_SAMPLE_SRV.Package_Item"
+	},
+	"ItemToHeader": {
+		"__deferred": {
+			"uri": "Package_ItemSet(Material_Number='Material_Number%207',Package_Id='Package_Id%207')/ItemToHeader"
+		}
+	}
+}, {
+	"Material_Number": "Material_Number 8",
+	"Package_Id": "Package_Id 8",
+	"Material_Desc": "Material_Desc 8",
+	"__metadata": {
+		"uri": "Package_ItemSet(Material_Number='Material_Number%208',Package_Id='Package_Id%208')",
+		"type": "ZFIKRI_WEBSHOP_SAMPLE_SRV.Package_Item"
+	},
+	"ItemToHeader": {
+		"__deferred": {
+			"uri": "Package_ItemSet(Material_Number='Material_Number%208',Package_Id='Package_Id%208')/ItemToHeader"
+		}
+	}
+}, {
+	"Material_Number": "Material_Number 9",
+	"Package_Id": "Package_Id 9",
+	"Material_Desc": "Material_Desc 9",
+	"__metadata": {
+		"uri": "Package_ItemSet(Material_Number='Material_Number%209',Package_Id='Package_Id%209')",
+		"type": "ZFIKRI_WEBSHOP_SAMPLE_SRV.Package_Item"
+	},
+	"ItemToHeader": {
+		"__deferred": {
+			"uri": "Package_ItemSet(Material_Number='Material_Number%209',Package_Id='Package_Id%209')/ItemToHeader"
+		}
+	}
+}, {
+	"Material_Number": "Material_Number 10",
+	"Package_Id": "Package_Id 10",
+	"Material_Desc": "Material_Desc 10",
+	"__metadata": {
+		"uri": "Package_ItemSet(Material_Number='Material_Number%2010',Package_Id='Package_Id%2010')",
+		"type": "ZFIKRI_WEBSHOP_SAMPLE_SRV.Package_Item"
+	},
+	"ItemToHeader": {
+		"__deferred": {
+			"uri": "Package_ItemSet(Material_Number='Material_Number%2010',Package_Id='Package_Id%2010')/ItemToHeader"
+		}
+	}
+}, {
+	"Package_Id": "Package_Id 1",
+	"Material_Number": "Mat test",
+	"Material_Desc": "mat"
+}]

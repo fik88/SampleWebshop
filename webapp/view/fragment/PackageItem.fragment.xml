@@ -1,0 +1,26 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Table id="item" width="auto" items="{ path: '/Package_ItemSet' }" noDataText="{worklistView>/tableNoDataText}"
+		busyIndicatorDelay="{worklistView>/tableBusyDelay}" growing="true" growingScrollToLoad="true" updateFinished="onUpdateFinished">
+		<headerToolbar>
+			<Toolbar>
+				<Title id="tableitem" text="{worklistView>/worklistTableTitle}"/>
+			</Toolbar>
+		</headerToolbar>
+		<columns>
+			<Column id="nameColumn">
+				<Text text="{/#Package_ItemSet/Material_Number/@sap:label}"/>
+			</Column>
+			<Column>
+				<Text text="{/#Package_ItemSet/Material_Desc/@sap:label}"/>
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+					<ObjectIdentifier title="{Material_Number}"/>
+					<ObjectIdentifier title="{Material_Desc}"/>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</core:FragmentDefinition>
