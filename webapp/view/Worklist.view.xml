@@ -12,7 +12,7 @@
 					<Toolbar>
 						<Title id="tableHeader" text="{worklistView>/worklistTableTitle}"/>
 						<ToolbarSpacer/>
-						<SearchField id="searchField" tooltip="{i18n>worklistSearchTooltip}" search="onSearch" width="auto" enabled="false"/>
+						<SearchField id="searchField" tooltip="{i18n>worklistSearchTooltip}" search="onSearch" width="auto" enabled="true"/>
 					</Toolbar>
 				</headerToolbar>
 				<columns>

@@ -110,7 +110,7 @@ sap.ui.define([
 				var sQuery = oEvent.getParameter("query");
 
 				if (sQuery && sQuery.length > 0) {
-					aTableSearchState = [new Filter("Package_Desc", FilterOperator.Contains, sQuery)];
+					aTableSearchState = [new Filter("Package_Id", FilterOperator.EQ, sQuery)];
 				}
 				this._applySearch(aTableSearchState);
 			}

@@ -166,12 +166,12 @@ sap.ui.define([
 			btrue = true;
 			
 			if (sSoldTo === "") {
-				this.byId("soldto").setValueState("Error");
+				this.byId("soldto").setValueState(sap.ui.core.ValueState.Error);
 				btrue = false;
 			}
 
 			if (sShipTo === "") {
-				this.byId("shipto").setValueState("Error");
+				this.byId("shipto").setValueState(sap.ui.core.ValueState.Error);
 				btrue = false;
 			}
 		},
