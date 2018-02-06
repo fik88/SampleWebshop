@@ -149,10 +149,32 @@ sap.ui.define([
 
 		_createOrder: function() {
 
-			this._createSalesData();
+			var btrue;
 
+			this._checkinput(btrue);
+
+			if (btrue === true) {
+				this._createSalesData();
+			}
 		},
 
+		_checkinput: function(btrue) {
+		
+			var sSoldTo = this.byId("soldto").getSelectedKey();
+			var sShipTo = this.byId("shipto").getSelectedKey();
+			
+			btrue = true;
+			
+			if (sSoldTo === "") {
+				this.byId("soldto").setValueState("Error");
+				btrue = false;
+			}
+
+			if (sShipTo === "") {
+				this.byId("shipto").setValueState("Error");
+				btrue = false;
+			}
+		},
 		_createSalesData: function() {
 
 			this._oModel = this.getModel();
@@ -181,11 +203,11 @@ sap.ui.define([
 				success: function(result) {
 					var sMsg = this._oResourceBundle.getText("ymsg.orderCreated") + result.Order_Id;
 					messages.show(sMsg);
-				
+
 				}.bind(this),
 				error: function(err) {
-				
-					}.bind(this)
+
+				}.bind(this)
 
 			});
 
