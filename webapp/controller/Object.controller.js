@@ -4,12 +4,15 @@ sap.ui.define([
 	"sap/ui/model/json/JSONModel",
 	"sap/ui/core/routing/History",
 	'sap/m/MessageToast',
+	"sap/ui/model/Filter",
+	"sap/ui/model/FilterOperator",
 	"cbsgmbh/webshop/WebShop/model/formatter"
 ], function(
 	BaseController,
 	JSONModel,
 	History,
 	messages,
+	Filter, FilterOperator,
 	formatter
 ) {
 	"use strict";
@@ -39,6 +42,9 @@ sap.ui.define([
 			this._oResourceBundle = this.getResourceBundle();
 
 			this.getRouter().getRoute("object").attachPatternMatched(this._onObjectMatched, this);
+			this._oModel = this.getModel();
+			this._oItemsTable = this.byId("item");
+			this._oItemTemplate = this.byId("itemList").clone();
 
 			// Store original busy indicator delay, so it can be restored later on
 			iOriginalBusyDelay = this.getView().getBusyIndicatorDelay();
@@ -61,6 +67,9 @@ sap.ui.define([
 		 */
 		onNavBack: function() {
 			var sPreviousHash = History.getInstance().getPreviousHash();
+
+			this.byId("soldto").setSelectedKey("");
+			this.byId("shipto").setSelectedKey("");
 
 			if (sPreviousHash !== undefined) {
 				history.go(-1);
@@ -89,8 +98,12 @@ sap.ui.define([
 				var sObjectPath = this.getModel().createKey("Package_HeaderSet", {
 					Package_Id: sObjectId
 				});
+
 				this._bindView("/" + sObjectPath);
+				this._bindItems(sObjectId);
+
 			}.bind(this));
+
 		},
 
 		/**
@@ -121,6 +134,15 @@ sap.ui.define([
 					}
 				}
 			});
+
+		},
+
+		_bindItems: function(sObjectId) {
+
+			var aTableFilter = [new Filter("Package_Id", FilterOperator.EQ, sObjectId)];
+
+			this._oItemsTable.getBinding("items").filter(aTableFilter, "Application");
+
 		},
 
 		_onBindingChange: function() {
@@ -149,36 +171,33 @@ sap.ui.define([
 
 		_createOrder: function() {
 
-			var btrue;
+			var bCheck = function() {
+				var sSoldTo = this.byId("soldto").getSelectedKey();
+				var sShipTo = this.byId("shipto").getSelectedKey();
 
-			this._checkinput(btrue);
+				if (sSoldTo === "") {
+					this.byId("soldto").setValueState(sap.ui.core.ValueState.Error);
+					return false;
 
-			if (btrue === true) {
+				}
+
+				if (sShipTo === "") {
+					this.byId("shipto").setValueState(sap.ui.core.ValueState.Error);
+					return false;
+				}
+				return true;
+			}.bind(this);
+
+			var bInCheck = bCheck();
+
+			if (bInCheck === true) {
 				this._createSalesData();
 			}
 		},
 
-		_checkinput: function(btrue) {
-		
-			var sSoldTo = this.byId("soldto").getSelectedKey();
-			var sShipTo = this.byId("shipto").getSelectedKey();
-			
-			btrue = true;
-			
-			if (sSoldTo === "") {
-				this.byId("soldto").setValueState(sap.ui.core.ValueState.Error);
-				btrue = false;
-			}
-
-			if (sShipTo === "") {
-				this.byId("shipto").setValueState(sap.ui.core.ValueState.Error);
-				btrue = false;
-			}
-		},
 		_createSalesData: function() {
 
 			this._oModel = this.getModel();
-
 			var oOrderHeader = {
 				Order_Id: '0',
 				Sold_To: this.byId("soldto").getSelectedKey(),

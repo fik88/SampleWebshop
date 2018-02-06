@@ -1,5 +1,5 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
-	<Table id="item" width="auto" items="{ path: '/Package_ItemSet' }" noDataText="{worklistView>/tableNoDataText}"
+	<Table id="item" width="auto" items="{ path: '/Package_ItemSet'}" noDataText="{worklistView>/tableNoDataText}"
 		busyIndicatorDelay="{worklistView>/tableBusyDelay}" growing="true" growingScrollToLoad="true" updateFinished="onUpdateFinished">
 		<headerToolbar>
 			<Toolbar>
@@ -15,7 +15,7 @@
 			</Column>
 		</columns>
 		<items>
-			<ColumnListItem>
+			<ColumnListItem id="itemList">
 				<cells>
 					<ObjectIdentifier title="{Material_Number}"/>
 					<ObjectIdentifier title="{Material_Desc}"/>

@@ -23,7 +23,7 @@
 				"type": "OData",
 				"settings": {
 					"odataVersion": "2.0",
-					"localUri": "localService/metadata.xml"
+					"localUri": "localService/ZFIKRI_WEBSHOP_SAMPLE_SRV/metadata.xml"
 				}
 			}
 		},
