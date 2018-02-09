@@ -156,7 +156,23 @@ sap.ui.define([
 			if (aTableSearchState.length !== 0) {
 				oViewModel.setProperty("/tableNoDataText", this.getResourceBundle().getText("worklistNoDataWithSearchText"));
 			}
-		}
+		},
 
+		opensaleorder: function() {
+			// if (sap.ushell && sap.ushell.Container && sap.ushell.Container.getService) {
+			// 	var oCrossAppNavigator = sap.ushell.Container.getService("CrossApplicationNavigation");
+			// 	oCrossAppNavigator.toExternal({
+			// 		target: {
+			// 			semanticObject: "JCB_BAY",
+			// 			action: "manage"
+			// params: {
+			// 	"salesorder": salesorder
+			// }
+			// 		}
+			// 	});
+			// } else {
+			// 	MessageBox.error("App to app navigation is not supported in this mode");
+			// }
+		}
 	});
 });

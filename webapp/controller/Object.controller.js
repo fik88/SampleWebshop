@@ -169,6 +169,31 @@ sap.ui.define([
 				oResourceBundle.getText("shareSendEmailObjectMessage", [sObjectName, sObjectId, location.href]));
 		},
 
+		onSoldToChg: function(selectedItem) {
+
+			var sSoldTo =  this.byId("soldto").getSelectedKey();
+			
+			if (this.byId("createOrder").getEnabled() === false && sSoldTo !== "") {
+				this.byId("createOrder").setEnabled(true);
+				this.byId("createOrder").setVisible(true);
+			} else if (sSoldTo === "") {
+				this.byId("createOrder").setEnabled(false);
+				this.byId("createOrder").setVisible(false);
+			}
+		},
+
+		onShipToChg: function(selectedItem) {
+			
+				var sShipTo =  this.byId("shipto").getSelectedKey();
+				
+			if (this.byId("createOrder").getEnabled() === false && sShipTo !== "") {
+				this.byId("createOrder").setEnabled(true);
+				this.byId("createOrder").setVisible(true);
+			} else if (sShipTo === "") {
+				this.byId("createOrder").setEnabled(false);
+				this.byId("createOrder").setVisible(false);
+			}
+		},
 		_createOrder: function() {
 
 			var bCheck = function() {

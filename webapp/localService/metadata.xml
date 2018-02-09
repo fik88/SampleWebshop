@@ -36,12 +36,14 @@
                 <Key>
                     <PropertyRef Name="Package_Id"/>
                 </Key>
-                <Property Name="Package_Id" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Package ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Package_Desc" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Package_Id" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Package ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Package_Desc" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Package Descriptions" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Rate" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Rating" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <NavigationProperty Name="HeaderToItems" Relationship="ZFIKRI_WEBSHOP_SAMPLE_SRV.PackageHeadertoPackageItem" FromRole="FromRole_PackageHeadertoPackageItem" ToRole="ToRole_PackageHeadertoPackageItem"/>
             </EntityType>
             <EntityType Name="Package_Item" sap:content-version="1">
                 <Key>
+                    <PropertyRef Name="Material_Number"/>
                     <PropertyRef Name="Package_Id"/>
                 </Key>
                 <Property Name="Material_Number" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>

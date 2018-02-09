@@ -22,12 +22,16 @@
 					<Column>
 						<Text text="{/#Package_HeaderSet/Package_Desc/@sap:label}"/>
 					</Column>
+						<Column>
+						<Text text="{/#Package_HeaderSet/Rate/@sap:label}"/>
+					</Column>
 				</columns>
 				<items>
 					<ColumnListItem type="Navigation" press="onPress">
 						<cells>
 							<ObjectIdentifier title="{Package_Id}"/>
-							<ObjectIdentifier title="{Package_Desc}"/>
+							<Text text="{Package_Desc}"/>
+							<Text text="{path: 'Rate' , formatter : '.formatter.rating'}" />
 						</cells>
 					</ColumnListItem>
 				</items>

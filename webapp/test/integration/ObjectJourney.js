@@ -2,12 +2,12 @@
 
 sap.ui.define([
 	"sap/ui/test/opaQunit"
-], function (opaTest) {
+], function(opaTest) {
 	"use strict";
 
 	QUnit.module("Object");
 
-	opaTest("Should see the busy indicator on object view after metadata is loaded", function (Given, When, Then) {
+	opaTest("Should see the busy indicator on object view after metadata is loaded", function(Given, When, Then) {
 		// Arrangements
 		Given.iStartMyApp();
 
@@ -22,6 +22,19 @@ sap.ui.define([
 		Then.onTheObjectPage.iShouldSeeTheObjectViewsBusyIndicator().
 		and.theObjectViewsBusyIndicatorDelayIsRestored().
 		and.iShouldSeeTheRememberedObject().and.iTeardownMyAppFrame();
+	});
+
+	opaTest("Should see the Create Sales Order button", function(Given, When, Then) {
+
+		// Arrangements
+		Given.iStartMyApp();
+
+		// //Actions
+		When.onTheWorklistPage.iRememberTheItemAtPosition(1);
+		// When.onTheObjectPage.iPressCreateSalesOrderButton();
+
+		// Assertions
+		Then.onTheObjectPage.iShouldSeeTheCreateSalesOrderButton().and.iTeardownMyAppFrame();
 	});
 
 });

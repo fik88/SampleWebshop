@@ -18,7 +18,7 @@ sap.ui.require([
 	"use strict";
 	Opa5.extendConfig({
 		arrangements: new Common(),
-		viewNamespace: "cbsgmbh.webshop.WebShop.view."
+		viewNamespace: "cbsgmbh.webshop.WebShop.view."                       
 	});
 
 	sap.ui.require([
