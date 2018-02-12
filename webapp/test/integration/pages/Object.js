@@ -78,7 +78,7 @@ sap.ui.define([
 					return this.waitFor({
 						id: "createOrder",
 						viewName: sViewName,
-						// controlType: "sap.m.Button",
+						controlType: "sap.m.Button",
 						// matchers: new sap.ui.test.matchers.PropertyStrictEquals({
 						// 	name: "text",
 						// 	value: "Create Sales Order Press"

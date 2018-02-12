@@ -12,7 +12,7 @@
 			<core:Fragment fragmentName="cbsgmbh.webshop.WebShop.view.fragment.OrderDetails" type="XML"/>
 		</semantic:content>
 		<semantic:customFooterContent>
-			<Button id="createOrder" text="{i18n>xbtn.createOrder}" type="Accept" press="onCreateOrder" visible="false" enabled="false"/>
+			<Button id="createOrder" text="{i18n>xbtn.createOrder}" type="Accept" press="onCreateOrder" visible="true" enabled="false"/>
 		</semantic:customFooterContent>
 	</semantic:FullscreenPage>
 </mvc:View>

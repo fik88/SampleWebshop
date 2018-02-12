@@ -2,11 +2,11 @@
 	<VBox class="sapUiSmallMargin">
 		<f:SimpleForm layout="ResponsiveGridLayout" title="{i18n>xtit.newOrder}" editable="true">
 			<Label text="{i18n>xlbl.soldto}" required="true"/>
-			<Select id="soldto" showSecondaryValues="true" items="{ path: '/Sold_ToSet', sorter: { path: 'Sold_To_Name' } }" maxWidth="200px" change="onSoldToChg">
+			<Select id="soldto" showSecondaryValues="true" items="{ path: '/Sold_ToSet', sorter: { path: 'Sold_To_Name' } }" maxWidth="200px">
 				<core:ListItem key="{Sold_To_Id}" text="{Sold_To_Name}" additionalText="{Sold_To_Id}"/>
 			</Select>
 			<Label text="{i18n>xlbl.shipto}" required="true"/>
-			<Select id="shipto" showSecondaryValues="true" items="{ path: '/Ship_ToSet', sorter: { path: 'Ship_To_Name' } }" maxWidth="200px" change="onShipToChg">
+			<Select id="shipto" showSecondaryValues="true" items="{ path: '/Ship_ToSet', sorter: { path: 'Ship_To_Name' } }" maxWidth="200px">
 				<core:ListItem key="{Ship_To_Id}" text="{Ship_To_Name}" additionalText="{Ship_To_Id}"/>
 			</Select>
 		</f:SimpleForm>

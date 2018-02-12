@@ -31,6 +31,9 @@ sap.ui.define([
 
 		// //Actions
 		When.onTheWorklistPage.iRememberTheItemAtPosition(1);
+		When.onTheBrowser.iRestartTheAppWithTheRememberedItem({
+			delay: 1000
+		});
 		// When.onTheObjectPage.iPressCreateSalesOrderButton();
 
 		// Assertions
