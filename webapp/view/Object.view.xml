@@ -9,10 +9,10 @@
 				</attributes>
 			</ObjectHeader>
 			<core:Fragment fragmentName="cbsgmbh.webshop.WebShop.view.fragment.PackageItem" type="XML"/>
-			<core:Fragment fragmentName="cbsgmbh.webshop.WebShop.view.fragment.OrderDetails" type="XML"/>
+			<!--<core:Fragment fragmentName="cbsgmbh.webshop.WebShop.view.fragment.OrderDetails" type="XML"/>-->
 		</semantic:content>
 		<semantic:customFooterContent>
-			<Button id="createOrder" text="{i18n>xbtn.createOrder}" type="Accept" press="onCreateOrder" visible="true" enabled="false"/>
+			<Button id="createOrder" text="{i18n>xbtn.createOrder}" type="Accept" press="onCreateOrder" visible="true" enabled="true"/>
 		</semantic:customFooterContent>
 	</semantic:FullscreenPage>
 </mvc:View>

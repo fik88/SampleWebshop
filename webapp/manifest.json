@@ -61,7 +61,8 @@
 				"sap.ui.core": {},
 				"sap.m": {},
 				"sap.f": {}
-			}
+			},
+			"components": {}
 		},
 		"contentDensities": {
 			"compact": true,
@@ -87,28 +88,19 @@
 				"controlId": "app",
 				"controlAggregation": "pages",
 				"bypassed": {
-					"target": [
-						"notFound"
-					]
+					"target": ["notFound"]
 				},
 				"async": true
 			},
-			"routes": [
-				{
-					"pattern": "",
-					"name": "worklist",
-					"target": [
-						"worklist"
-					]
-				},
-				{
-					"pattern": "Package_HeaderSet/{objectId}",
-					"name": "object",
-					"target": [
-						"object"
-					]
-				}
-			],
+			"routes": [{
+				"pattern": "",
+				"name": "worklist",
+				"target": ["worklist"]
+			}, {
+				"pattern": "Package_HeaderSet/{objectId}",
+				"name": "object",
+				"target": ["object"]
+			}],
 			"targets": {
 				"worklist": {
 					"viewName": "Worklist",

@@ -1,14 +1,22 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form">
-	<VBox class="sapUiSmallMargin">
-		<f:SimpleForm layout="ResponsiveGridLayout" title="{i18n>xtit.newOrder}" editable="true">
-			<Label text="{i18n>xlbl.soldto}" required="true"/>
-			<Select id="soldto" showSecondaryValues="true" items="{ path: '/Sold_ToSet', sorter: { path: 'Sold_To_Name' } }" maxWidth="200px">
-				<core:ListItem key="{Sold_To_Id}" text="{Sold_To_Name}" additionalText="{Sold_To_Id}"/>
-			</Select>
-			<Label text="{i18n>xlbl.shipto}" required="true"/>
-			<Select id="shipto" showSecondaryValues="true" items="{ path: '/Ship_ToSet', sorter: { path: 'Ship_To_Name' } }" maxWidth="200px">
-				<core:ListItem key="{Ship_To_Id}" text="{Ship_To_Name}" additionalText="{Ship_To_Id}"/>
-			</Select>
-		</f:SimpleForm>
-	</VBox>
+	<Dialog title="{i18n>xtit.newOrder}">
+		<VBox class="sapUiSmallMargin">
+			<f:SimpleForm layout="ResponsiveGridLayout" title="{i18n>xtit.newOrder}" editable="true">
+				<Label text="{i18n>xlbl.soldto}" required="true"/>
+				<Select id="soldto" showSecondaryValues="true" items="{ path: '/Sold_ToSet', sorter: { path: 'Sold_To_Name' } }" forceSelection="false"
+					maxWidth="200px">
+					<core:ListItem key="{Sold_To_Id}" text="{Sold_To_Name}" additionalText="{Sold_To_Id}"/>
+				</Select>
+				<Label text="{i18n>xlbl.shipto}" required="true"/>
+				<Select id="shipto" showSecondaryValues="true" items="{ path: '/Ship_ToSet', sorter: { path: 'Ship_To_Name' } }" forceSelection="false"
+					maxWidth="200px">
+					<core:ListItem key="{Ship_To_Id}" text="{Ship_To_Name}" additionalText="{Ship_To_Id}"/>
+				</Select>
+			</f:SimpleForm>
+		</VBox>
+		<buttons>
+			<Button press="onSave" text="{i18n>xbtn.saveOrder}"/>
+			<Button press="onCancel" text="{i18n>xbtn.cancelOrder}"/>
+		</buttons>
+	</Dialog>
 </core:FragmentDefinition>

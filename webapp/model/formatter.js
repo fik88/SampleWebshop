@@ -22,9 +22,9 @@ sap.ui.define([], function() {
 			    sRating = "";
 
 			if (sRate === "1") {
-				sRating =oResourceBundle.getText("formatterGood");
+				sRating =oResourceBundle.getText("xtxt.formatterGood");
 			} else if (sRate === "2") {
-				sRating =oResourceBundle.getText("formatterBad");
+				sRating =oResourceBundle.getText("xtxt.formatterBad");
 			}
 
 			return sRating;

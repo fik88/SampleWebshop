@@ -54,7 +54,7 @@ sap.ui.define([
 		}
 	});
 
-	QUnit.test("Should determine Rating Good for the package ", function(assert) {
+	QUnit.test("Should determine Rating for the package ", function(assert) {
 
 		assert.strictEqual(this.fnIsolatedFormatter("1"), "good");
 	});

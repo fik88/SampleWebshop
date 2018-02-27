@@ -6,14 +6,16 @@ sap.ui.define([
 	'sap/m/MessageToast',
 	"sap/ui/model/Filter",
 	"sap/ui/model/FilterOperator",
-	"cbsgmbh/webshop/WebShop/model/formatter"
+	"cbsgmbh/webshop/WebShop/model/formatter",
+	"cbsgmbh/webshop/WebShop/utils/utilities"
 ], function(
 	BaseController,
 	JSONModel,
 	History,
 	messages,
 	Filter, FilterOperator,
-	formatter
+	formatter,
+	utilities
 ) {
 	"use strict";
 
@@ -45,6 +47,7 @@ sap.ui.define([
 			this._oModel = this.getModel();
 			this._oItemsTable = this.byId("item");
 			this._oItemTemplate = this.byId("itemList").clone();
+			this._oView = this.getView();
 
 			// Store original busy indicator delay, so it can be restored later on
 			iOriginalBusyDelay = this.getView().getBusyIndicatorDelay();
@@ -78,8 +81,20 @@ sap.ui.define([
 			}
 		},
 
-		onCreateOrder: function() {
+		onSave: function() {
 			this._createOrder();
+		},
+
+		onCancel: function() {
+			this._oOrderDialog.close();
+		},
+
+		onCreateOrder: function(oEvent) {
+			if (!this._oOrderDialog) {
+				this._oOrderDialog = this._createDialog("cbsgmbh.webshop.WebShop.view.fragment.OrderDetails");
+			}
+			this._oOrderDialog.open();
+
 		},
 
 		/* =========================================================== */
@@ -169,20 +184,20 @@ sap.ui.define([
 				oResourceBundle.getText("shareSendEmailObjectMessage", [sObjectName, sObjectId, location.href]));
 		},
 
-		_createOrder: function() {
+		_createOrder: function(oEvent) {
 
 			var bCheck = function() {
-				var sSoldTo = this.byId("soldto").getSelectedKey();
-				var sShipTo = this.byId("shipto").getSelectedKey();
+				var sSoldTo = sap.ui.getCore().byId("soldto").getSelectedKey();
+				var sShipTo = sap.ui.getCore().byId("shipto").getSelectedKey();
 
 				if (sSoldTo === "") {
-					this.byId("soldto").setValueState(sap.ui.core.ValueState.Error);
+					sap.ui.getCore().byId("soldto").setValueState(sap.ui.core.ValueState.Error);
 					return false;
 
 				}
 
 				if (sShipTo === "") {
-					this.byId("shipto").setValueState(sap.ui.core.ValueState.Error);
+					sap.ui.getCore().byId("shipto").setValueState(sap.ui.core.ValueState.Error);
 					return false;
 				}
 				return true;
@@ -197,11 +212,10 @@ sap.ui.define([
 
 		_createSalesData: function() {
 
-			this._oModel = this.getModel();
 			var oOrderHeader = {
 				Order_Id: '0',
-				Sold_To: this.byId("soldto").getSelectedKey(),
-				Ship_To: this.byId("shipto").getSelectedKey(),
+				Sold_To: sap.ui.getCore().byId("soldto").getSelectedKey(),
+				Ship_To: sap.ui.getCore().byId("shipto").getSelectedKey(),
 				Package_Id: this.byId("objectHeader").getTitle(),
 				SalesOrderHeaderToSalesOrderItems: []
 			};
@@ -222,6 +236,7 @@ sap.ui.define([
 				success: function(result) {
 					var sMsg = this._oResourceBundle.getText("ymsg.orderCreated") + result.Order_Id;
 					messages.show(sMsg);
+					this._oOrderDialog.close();
 
 				}.bind(this),
 				error: function(err) {
@@ -230,6 +245,19 @@ sap.ui.define([
 
 			});
 
+		},
+
+		/**		
+		 * Create dialog constructor method
+		 * @constructor constructor for creating dialog
+		 * @param {String} sDialog dialog fragment name
+		 * @returns return dialog
+		 */
+		_createDialog: function(sDialog) {
+			var oDialog = sap.ui.xmlfragment(sDialog, this);
+			jQuery.sap.syncStyleClass("sapUiSizeCompact", this._oView, oDialog);
+			utilities.attachControl(this._oView, oDialog);
+			return oDialog;
 		}
 	});
 
