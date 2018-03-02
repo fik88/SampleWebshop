@@ -11,6 +11,7 @@
 			<core:Fragment fragmentName="cbsgmbh.webshop.WebShop.view.fragment.PackageItem" type="XML"/>
 		</semantic:content>
 		<semantic:customFooterContent>
+			<Button icon="sap-icon://alert" press="showMessages" width="100px" visible="{= ${msg>/}.length>0 }"/>
 			<Button id="createOrder" text="{i18n>xbtn.createOrder}" type="Accept" press="onCreateOrder" visible="true" enabled="true"/>
 		</semantic:customFooterContent>
 	</semantic:FullscreenPage>

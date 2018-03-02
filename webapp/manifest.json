@@ -85,6 +85,9 @@
 					"loadMetadataAsync": true,
 					"defaultCountMode": "None"
 				}
+			},
+			"appModel": {
+				"type": "sap.ui.model.json.JSONModel"
 			}
 		},
 		"routing": {

@@ -28,6 +28,7 @@ sap.ui.define([
 				// set the device model
 				this.setModel(models.createDeviceModel(), "device");
 				sap.ui.getCore().getMessageManager().registerMessageProcessor(this.getModel());
+				
 				// create the views based on the url/hash
 				this.getRouter().initialize();
 			},

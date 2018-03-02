@@ -158,12 +158,12 @@ sap.ui.define([
 			}
 		},
 
-		opensaleorder: function() {
+		onOpenSalesOrder: function() {
 			// if (sap.ushell && sap.ushell.Container && sap.ushell.Container.getService) {
 			// 	var oCrossAppNavigator = sap.ushell.Container.getService("CrossApplicationNavigation");
 			// 	oCrossAppNavigator.toExternal({
 			// 		target: {
-			// 			semanticObject: "JCB_BAY",
+			// 			semanticObject: "",
 			// 			action: "manage"
 			// params: {
 			// 	"salesorder": salesorder

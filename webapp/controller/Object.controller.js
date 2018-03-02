@@ -6,16 +6,14 @@ sap.ui.define([
 	'sap/m/MessageToast',
 	"sap/ui/model/Filter",
 	"sap/ui/model/FilterOperator",
+	"sap/m/MessagePopover",
+	"sap/m/MessagePopoverItem",
 	"cbsgmbh/webshop/WebShop/model/formatter",
-	"cbsgmbh/webshop/WebShop/utils/utilities"
-], function(
-	BaseController,
-	JSONModel,
-	History,
-	messages,
-	Filter, FilterOperator,
-	formatter,
-	utilities
+	"cbsgmbh/webshop/WebShop/utils/utilities",
+	"cbsgmbh/webshop/WebShop/controller/messages"
+], function(BaseController, JSONModel, History, messagesToast,
+	Filter, FilterOperator, MessagePopover, MessagePopoverItem,
+	formatter, utilities, messages
 ) {
 	"use strict";
 
@@ -48,6 +46,8 @@ sap.ui.define([
 			this._oItemsTable = this.byId("item");
 			this._oItemTemplate = this.byId("itemList").clone();
 			this._oView = this.getView();
+			this.oMessageManager = sap.ui.getCore().getMessageManager();
+			this.getView().setModel(this.oMessageManager.getMessageModel(), "msg");
 
 			// Store original busy indicator delay, so it can be restored later on
 			iOriginalBusyDelay = this.getView().getBusyIndicatorDelay();
@@ -70,9 +70,10 @@ sap.ui.define([
 		 */
 		onNavBack: function() {
 			var sPreviousHash = History.getInstance().getPreviousHash();
-			
-			this._oModel.resetChanges();
-			
+
+			sap.ui.getCore().byId("soldto").setSelectedKey("");
+			sap.ui.getCore().byId("shipto").setSelectedKey("");
+
 			if (sPreviousHash !== undefined) {
 				history.go(-1);
 			} else {
@@ -85,6 +86,9 @@ sap.ui.define([
 		},
 
 		onCancel: function() {
+			sap.ui.getCore().byId("soldto").setSelectedKey("");
+			sap.ui.getCore().byId("shipto").setSelectedKey("");
+
 			this._oOrderDialog.close();
 		},
 
@@ -94,6 +98,28 @@ sap.ui.define([
 			}
 			this._oOrderDialog.open();
 
+		},
+
+		/** 
+		 * Add messege from server in message pop over
+		 * @param {Object} oEvent Event Type
+		 * @return {void}
+		 */
+		showMessages: function(oEvent) {
+			if (!this._oMessagePopover) {
+				this._oMessagePopover = new MessagePopover({
+					items: {
+						path: "msg>/",
+						template: new MessagePopoverItem({
+							type: "{msg>type}",
+							title: "{msg>message}",
+							description: "{msg>description}"
+						})
+					}
+				});
+				this._oMessagePopover.setModel(this.oMessageManager.getMessageModel(), "msg");
+			}
+			this._oMessagePopover.openBy(oEvent.getSource());
 		},
 
 		/* =========================================================== */
@@ -231,18 +257,61 @@ sap.ui.define([
 			}
 
 			this._oModel.setUseBatch(false);
+			this.getMessageManager().removeMessages();
+			this._oView.setBusy(true);
+
 			this._oModel.create("/Sales_OrderHeaderSet", oOrderHeader, {
-				success: function(result) {
-					var sMsg = this._oResourceBundle.getText("ymsg.orderCreated") + result.Order_Id;
-					messages.show(sMsg);
-					this._oOrderDialog.close();
-
-				}.bind(this),
-				error: function(err) {
-
-				}.bind(this)
+				success: this._serviceSucessMsg.bind(this),
+				error: this._serviceErrormsg.bind(this)
 
 			});
+
+		},
+
+		_serviceSucessMsg: function(oResponse) {
+
+			this._oModel.setRefreshAfterChange(true);
+
+			// Search error message from Server
+			var fnError = function(sErrorMessage) {
+				return sErrorMessage.type === "Error";
+			};
+			// Get Return Message from Server
+			var aData = this.oMessageManager.getMessageModel().oData;
+
+			if (aData.length > 0) {
+				aData.filter(fnError);
+				if (aData.length > 0) {
+					this.serverMessage(aData);
+					messages.showMessage(this._oResourceBundle.getText("ymsg.createError"), "E", this._oResourceBundle.getText("xtit.errorTitle"));
+				} else {
+					messages.showMessage(this._oResourceBundle.getText("ymsg.orderCreated"), "S", this._oResourceBundle.getText("xtit.successTitle"));
+				}
+			} else {
+				var msg = this._oResourceBundle.getText("ymsg.orderNoCreated", oResponse.Order_Id);
+
+				messages.showMessage(msg, "S", this._oResourceBundle.getText("xtit.successTitle"));
+			}
+
+			this._oView.setBusy(false);
+		},
+
+		_serviceErrormsg: function() {
+
+			this._oView.setBusy(false);
+			// Search error message from Server
+			var fnError = function(sErrorMessage) {
+				return sErrorMessage.type === "Error";
+			};
+			// Get Return Message from Server
+			var aData = this.oMessageManager.getMessageModel().getProperty("/");
+			if (aData.length > 0) {
+				aData.filter(fnError);
+				if (aData.length > 0) {
+					this.serverMessage(aData);
+				}
+			}
+			messages.showMessage(this._oResourceBundle.getText("ymsg.serviceError"), "E", this._oResourceBundle.getText("xtit.errorTitle"));
 
 		},
 
