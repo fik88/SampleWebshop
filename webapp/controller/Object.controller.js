@@ -70,10 +70,9 @@ sap.ui.define([
 		 */
 		onNavBack: function() {
 			var sPreviousHash = History.getInstance().getPreviousHash();
-
-			this.byId("soldto").setSelectedKey("");
-			this.byId("shipto").setSelectedKey("");
-
+			
+			this._oModel.resetChanges();
+			
 			if (sPreviousHash !== undefined) {
 				history.go(-1);
 			} else {

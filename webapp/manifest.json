@@ -77,7 +77,14 @@
 			},
 			"": {
 				"dataSource": "mainService",
-				"preload": true
+				"preload": true,
+				"settings": {
+					"json": true,
+					"defaultBindingMode": "TwoWay",
+					"useBatch": true,
+					"loadMetadataAsync": true,
+					"defaultCountMode": "None"
+				}
 			}
 		},
 		"routing": {

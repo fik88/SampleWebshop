@@ -28,13 +28,11 @@ sap.ui.define([
 					return this.waitFor({
 						id: "createOrder",
 						viewName: sViewName,
-						// matchers: new PropertyStrictEquals({
-						// 	name: "type",
-						// 	value: "Accept"
-						// }),
+						controlType: "sap.m.Button",
 						actions: new Press(),
 						errorMessage: "Did not find the Create Sales Order Button"
 					});
+
 				}
 
 			}, shareOptions.createActions(sViewName)),
@@ -79,10 +77,6 @@ sap.ui.define([
 						id: "createOrder",
 						viewName: sViewName,
 						controlType: "sap.m.Button",
-						// matchers: new sap.ui.test.matchers.PropertyStrictEquals({
-						// 	name: "text",
-						// 	value: "Create Sales Order Press"
-						// }),
 						success: function(aButtons) {
 							Opa5.assert.ok(true, "Create Sales Order Button is visible");
 						},
@@ -90,6 +84,16 @@ sap.ui.define([
 					});
 				},
 
+				iShouldSeeTheCreateOrderDialog: function() {
+					return this.waitFor({
+						controlType: "sap.m.Dialog",
+						success: function() {
+							Opa5.assert.ok(true, "Create Sales Order dialog is open");
+						},
+						errorMessage: "Unabel to open Create Sales Order dialog"
+					});
+				},
+				
 				theViewIsNotBusyAnymore: function() {
 					return this.waitFor({
 						id: "page",

@@ -8,6 +8,7 @@ sap.ui.define([
 	QUnit.module("Object");
 
 	opaTest("Should see the busy indicator on object view after metadata is loaded", function(Given, When, Then) {
+
 		// Arrangements
 		Given.iStartMyApp();
 
@@ -21,23 +22,25 @@ sap.ui.define([
 		// Assertions
 		Then.onTheObjectPage.iShouldSeeTheObjectViewsBusyIndicator().
 		and.theObjectViewsBusyIndicatorDelayIsRestored().
-		and.iShouldSeeTheRememberedObject().and.iTeardownMyAppFrame();
+		and.iShouldSeeTheRememberedObject();
+
 	});
 
 	opaTest("Should see the Create Sales Order button", function(Given, When, Then) {
 
-		// Arrangements
-		Given.iStartMyApp();
+		// Assertions
+		Then.onTheObjectPage.iShouldSeeTheCreateSalesOrderButton();
 
-		// //Actions
-		When.onTheWorklistPage.iRememberTheItemAtPosition(1);
-		When.onTheBrowser.iRestartTheAppWithTheRememberedItem({
-			delay: 1000
-		});
-		// When.onTheObjectPage.iPressCreateSalesOrderButton();
+	});
+
+	opaTest("Create Sales Order Button open a new dialog", function(Given, When, Then) {
+
+		// Actions
+		When.onTheObjectPage.iPressCreateSalesOrderButton();
 
 		// Assertions
-		Then.onTheObjectPage.iShouldSeeTheCreateSalesOrderButton().and.iTeardownMyAppFrame();
+		Then.onTheObjectPage.iShouldSeeTheCreateOrderDialog().and.iTeardownMyAppFrame();
+
 	});
 
 });
