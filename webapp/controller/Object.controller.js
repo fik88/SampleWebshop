@@ -71,8 +71,8 @@ sap.ui.define([
 		onNavBack: function() {
 			var sPreviousHash = History.getInstance().getPreviousHash();
 
-			sap.ui.getCore().byId("soldto").setSelectedKey("");
-			sap.ui.getCore().byId("shipto").setSelectedKey("");
+			// sap.ui.getCore().byId("soldto").setSelectedKey("");
+			// sap.ui.getCore().byId("shipto").setSelectedKey("");
 
 			if (sPreviousHash !== undefined) {
 				history.go(-1);
